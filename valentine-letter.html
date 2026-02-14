@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti, Mi Amor ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .hearts-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .letter-card {
+            background: white;
+            padding: 45px 40px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            margin: 0 auto;
+            animation: slideIn 0.6s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .letter-content-wrapper {
+            display: none;
+        }
+
+        .letter-content-wrapper.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #c2185b;
+            font-size: 28px;
+            font-weight: bold;
+            border-bottom: 3px solid #fce4ec;
+            padding-bottom: 15px;
+        }
+
+        .letter-text {
+            color: #333;
+            line-height: 1.9;
+            font-size: 17px;
+            text-align: justify;
+        }
+
+        .letter-text p {
+            margin-bottom: 18px;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 30px;
+            font-style: italic;
+            color: #c2185b;
+            font-size: 19px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .nav-button:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.5);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+            opacity: 0.6;
+        }
+
+        .page-indicator {
+            text-align: center;
+            margin-top: 25px;
+            color: white;
+            font-size: 16px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-weight: 500;
+        }
+
+        .heart-icon {
+            color: #ff69b4;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10%, 30% {
+                transform: scale(1.2);
+            }
+            20%, 40% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .letter-card {
+                padding: 30px 25px;
+            }
+
+            .letter-header {
+                font-size: 22px;
+            }
+
+            .letter-text {
+                font-size: 15px;
+            }
+
+            .signature {
+                font-size: 16px;
+            }
+
+            .nav-button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .page-indicator {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-background" id="heartsContainer"></div>
+    
+    <div class="container">
+        <div class="letter-card">
+            <!-- Carta 1 -->
+            <div class="letter-content-wrapper active" id="letter1">
+                <div class="letter-header">Para mi princesa popi el amor de mi vida 💕</div>
+                <div class="letter-text">
+                    <p>Mi mami,</p>
+                    <p>Hoy celebramos otro 14 de febrero juntos, y aunque la distancia nos separe físicamente, nunca ha podido separar nuestros corazones, a pasado 2 años increíbles desde que comenzamos esta aventura, y cada día me enamoro más de ti.</p>
+                    <p>Recuerdo perfectamente el momento en que todo comenzó. Desde el primer "hola", supe que eras especial la forma en que me haces sonreír, cómo entiendes mis silencios, y cómo iluminas mis días más oscuros... eres mi persona favorita en todo el mundo.</p>
+                    <p>Estos 2 años han sido una montaña rusa de emociones hermosas. Hemos compartido risas interminables, conversaciones hasta la madrugada, y momentos que atesoro en lo más profundo de mi corazón.</p>
+                </div>
+                <div class="signature">Pacifica 💓</div>
+                <div class="navigation">
+                    <button class="nav-button" onclick="prevLetter()" disabled>← Anterior</button>
+                    <button class="nav-button" onclick="nextLetter()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Carta 2 -->
+            <div class="letter-content-wrapper" id="letter2">
+                <div class="letter-header">Nuestra Fortaleza 💪❤️</div>
+                <div class="letter-text">
+                    <p>Mi bebesauria,</p>
+                    <p>No todo ha sido fácil, lo sé. Hemos enfrentado momentos difíciles, discusiones, malentendidos... La distancia a veces pesa y duele. Hay noches en las que solo quiero abrazarte y no puedo. Hay momentos en los que una videollamada no es suficiente.</p>
+                    <p>Pero sabes qué es lo más hermoso de todo esto? Que a pesar de cada obstáculo, cada problema, cada momento de incertidumbre... SIEMPRE hemos encontrado la manera de salir adelante JUNTOS.</p>
+                    <p>Cada vez que superamos una dificultad, nuestra relación se hace más fuerte. Cada lágrima que hemos secado, cada reconciliación, cada "lo siento" sincero... todo eso nos ha convertido en el equipo imparable que somos hoy.</p>
+                    <p>Eres mi compañera de batalla, mi refugio seguro, la persona con la que quiero superar todos los desafíos de la vida.</p>
+                </div>
+                <div class="signature">Consentida💗</div>
+                <div class="navigation">
+                    <button class="nav-button" onclick="prevLetter()">← Anterior</button>
+                    <button class="nav-button" onclick="nextLetter()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Carta 3 -->
+            <div class="letter-content-wrapper" id="letter3">
+                <div class="letter-header">Mi Felicidad Eres Tú ✨</div>
+                <div class="letter-text">
+                    <p>Mi dulce esperanza,</p>
+                    <p>No hay palabras suficientes para expresar lo FELIZ que me haces. Durante estos 2 años, has llenado mi vida de una luz que no sabía que existía. Cada mensaje tuyo, cada llamada, cada "buenos días" y "buenas noches" hace que mi corazón se acelere como el primer día.</p>
+                    <p>Me haces feliz cuando me cuentas tu día, cuando compartimos nuestros sueños tontos, cuando me mandas esa canción que te recordó a mí, cuando simplemente estás ahí siendo TÚ.</p>
+                    <p>Has traído color a mi vida. Me has enseñado que el amor verdadero no conoce distancias, que se puede construir algo hermoso con paciencia, confianza y dedicación.</p>
+                    <p>Gracias por elegirme cada día, por confiar en nosotros, por no rendirte cuando las cosas se ponen difíciles.</p>
+                </div>
+                <div class="signature">Esperanza💞</div>
+                <div class="navigation">
+                    <button class="nav-button" onclick="prevLetter()">← Anterior</button>
+                    <button class="nav-button" onclick="nextLetter()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Carta 4 -->
+            <div class="letter-content-wrapper" id="letter4">
+                <div class="letter-header">Nuestro Futuro 🌈</div>
+                <div class="letter-text">
+                    <p>Mi babe,</p>
+                    <p>Cuando pienso en el futuro, solo te veo a ti. Sueño con el día en que la distancia ya no exista, cuando pueda abrazarte sin tener que soltarte, cuando podamos crear recuerdos en el mismo espacio y no solo a través de pantallas.</p>
+                    <p>Sueño con despertarme a tu lado, con preparar el desayuno juntos, con discutir qué película ver en el mismo sofá, con caminar de la mano por las calles. Todas esas pequeñas cosas que ahora parecen tan grandes.</p>
+                    <p>Pero mientras ese día llega, quiero que sepas que cada día de espera vale la pena. Porque al final de este camino, nos tendremos el uno al otro para siempre.</p>
+                    <p>Estos 2 años son solo el comienzo de una vida juntos. Tengo tantos planes, tantos sueños contigo...</p>
+                </div>
+                <div class="signature">Random💕</div>
+                <div class="navigation">
+                    <button class="nav-button" onclick="prevLetter()">← Anterior</button>
+                    <button class="nav-button" onclick="nextLetter()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Carta 5 -->
+            <div class="letter-content-wrapper" id="letter5">
+                <div class="letter-header">Nuestro Cariño 💫</div>
+                <div class="letter-text">
+                    <p>Mi romi,</p>
+                    <p>Cuando pienso en el futuro, solo te veo a ti. Sueño con el día en que la distancia ya no exista, cuando pueda abrazarte sin tener que soltarte, cuando podamos crear recuerdos en el mismo espacio y no solo a través de pantallas.</p>
+                    <p>Sueño con despertarme a tu lado, con preparar el desayuno juntos, con discutir qué película ver en el mismo sofá, con caminar de la mano por las calles. Todas esas pequeñas cosas que ahora parecen tan grandes.</p>
+                    <p>Pero mientras ese día llega, quiero que sepas que cada día de espera vale la pena. Porque al final de este camino, nos tendremos el uno al otro para siempre.</p>
+                    <p>Estos 2 años son solo el comienzo de una vida juntos. Tengo tantos planes, tantos sueños contigo...</p>
+                </div>
+                <div class="signature">Blizty 🩶</div>
+                <div class="navigation">
+                    <button class="nav-button" onclick="prevLetter()">← Anterior</button>
+                    <button class="nav-button" onclick="nextLetter()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Carta 6 -->
+            <div class="letter-content-wrapper" id="letter6">
+                <div class="letter-header">Feliz San Valentín, Mi Amor 💝</div>
+                <div class="letter-text">
+                    <p>Mi princesa popi,</p>
+                    <p>En este día tan especial, quiero que sepas que eres lo mejor que me ha pasado en la vida. 2 años a tu lado han sido los más maravillosos de mi existencia, y espero que sean solo el comienzo de toda una vida juntos.</p>
+                    <p>La distancia no es nada comparada con lo que siento por ti. Aunque no pueda estar físicamente contigo hoy, mi corazón está completamente en tus manos. Cada latido lleva tu nombre.</p>
+                    <p>Te amo por quien eres, por cómo me haces sentir, por tu paciencia, por tu amor incondicional. Te amo en los días buenos y en los difíciles. Te amo hoy, mañana y siempre.</p>
+                    <p>Feliz San Valentín, mi amor. Que este sea uno de muchos que celebraremos juntos, y que cada año nuestro amor crezca más y más.</p>
+                    <p style="text-align: center; font-size: 20px; margin-top: 25px; color: #c2185b;">
+                        <strong>LAS AMAMOS CON TODO NESTRO SER ❤️</strong>
+                    </p>
+                </div>
+                <div class="signature">Tuyo para siempre 💙🤍</div>
+                <div class="navigation">
+                    <button class="nav-button" onclick="prevLetter()">← Anterior</button>
+                    <button class="nav-button" onclick="nextLetter()" disabled>Siguiente →</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-indicator" id="pageIndicator">
+            Carta 1: El Comienzo de Nuestra Historia <span class="heart-icon">❤️</span> (1 de 5)
+        </div>
+    </div>
+
+    <script>
+        let currentLetter = 1;
+        const totalLetters = 6;
+
+        // Crear corazones flotantes
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        function nextLetter() {
+            if (currentLetter < totalLetters) {
+                document.getElementById(`letter${currentLetter}`).classList.remove('active');
+                currentLetter++;
+                document.getElementById(`letter${currentLetter}`).classList.add('active');
+                updatePageIndicator();
+            }
+        }
+
+        function prevLetter() {
+            if (currentLetter > 1) {
+                document.getElementById(`letter${currentLetter}`).classList.remove('active');
+                currentLetter--;
+                document.getElementById(`letter${currentLetter}`).classList.add('active');
+                updatePageIndicator();
+            }
+        }
+
+        function updatePageIndicator() {
+            const titles = [
+                'Carta 1: Para mi princesa popi el amor de mi vida',
+                'Carta 2: Nuestra Fortaleza',
+                'Carta 3: Mi Felicidad Eres Tú',
+                'Carta 4: Nuestro Futuro Juntos',
+                'Carta 5: Nuestro Cariño',
+                'Carta 6: Feliz San Valentín'
+            ];
+            document.getElementById('pageIndicator').innerHTML = 
+                `${titles[currentLetter - 1]} <span class="heart-icon">❤️</span> (${currentLetter} de ${totalLetters})`;
+        }
+
+        // Inicializar
+        createHearts();
+    </script>
+</body>
+</html>
